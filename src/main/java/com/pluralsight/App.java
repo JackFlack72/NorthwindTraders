@@ -17,9 +17,9 @@ public class App {
 
     private static void displayProducts(String url, String username, String password) {
         String query = """
-                SELECT productid, productname, unitprice, unitsinstock
+                SELECT ProductID, ProductName, UnitPrice, UnitsInStock
                 FROM products
-                WHERE productname LIKE ?
+                WHERE ProductName LIKE ?
                 """;
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
@@ -31,10 +31,10 @@ public class App {
             try (ResultSet results = statement.executeQuery()) {
 
                 while (results.next()) {
-                    String productId = results.getString("productid");
-                    String name = results.getString("productname");
-                    double price = results.getDouble("unitprice");
-                    int stock = results.getInt("unitsinstock");
+                    String productId = results.getString("ProductID");
+                    String name = results.getString("ProductName");
+                    double price = results.getDouble("UnitPrice");
+                    int stock = results.getInt("UnitsInStock");
 
                     System.out.println("Product Id: " + productId);
                     System.out.println("Name: " + name);
